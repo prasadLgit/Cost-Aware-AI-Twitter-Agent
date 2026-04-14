@@ -9,25 +9,25 @@ An AI-driven Twitter bot that generates context-aware replies using LangGraph, w
 🔁 Prevents duplicate processing of tweets
 ⚡ Cost-aware design to reduce unnecessary API usage
 
-
-                    START
-                      │
-                      ▼
-                 route_node
-            (30% / 70% decision)
-               /              \
-              /                \
-   fetch_tweets_from_mail   fetch_tweets_auto
-              │                    │
-              ▼                    ▼
-        llm_generate         llm_generate
-              │                    │
-              ▼                    ▼
-         post_tweet           post_tweet
-              │                    │
-              └──────────┬─────────┘
-                         ▼
-                        END
+                        START
+  │
+  ▼
+route_node (30% / 70%)
+  │
+  ├───────────────--------------┐
+  │                             │
+  ▼                             ▼
+fetch_tweets_from_mail    fetch_tweets_auto
+  │                             │
+  ▼                             ▼
+llm_generate               llm_generate
+  │                             │
+  ▼                             ▼
+post_tweet                   post_tweet
+  │                              │
+  └───────┬───────---------------┘
+          ▼
+         END
 
 
 ⚙️ Tech Stack
