@@ -10,7 +10,24 @@ An AI-driven Twitter bot that generates context-aware replies using LangGraph, w
 ⚡ Cost-aware design to reduce unnecessary API usage
 
 
-Email → Fetch Tweet → Extract Media → LLM → Generate Reply → Post to Twitter
+                    START
+                      │
+                      ▼
+                 route_node
+            (30% / 70% decision)
+               /              \
+              /                \
+   fetch_tweets_from_mail   fetch_tweets_auto
+              │                    │
+              ▼                    ▼
+        llm_generate         llm_generate
+              │                    │
+              ▼                    ▼
+         post_tweet           post_tweet
+              │                    │
+              └──────────┬─────────┘
+                         ▼
+                        END
 
 
 ⚙️ Tech Stack
